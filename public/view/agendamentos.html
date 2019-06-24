@@ -1,0 +1,55 @@
+<h1 class="display-4" style="margin-top: 20px">Agendamentos
+</h1>
+<hr style="border-color: #aaaaaa; box-sizing: border-box; width: 100%"/>
+
+
+  
+<table class="table" >
+
+    <thead class="thead-light">
+    <tr>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Ventilador</th>
+        <th>Sala</th>
+        <th>Quarto</th>
+        <th>TV</th>
+        <th>Editar</th>
+        <th>Remover</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr ng-repeat="ag in lista">
+        <td>
+             
+            {{ag.data | date : "dd/MM/yyyy" : 'UTC'}}
+        </td>
+        <td>
+            {{ag.hora}}
+        </td>
+        <td>
+            {{ag.ventilador ? "Ligado" : "Desligado"}}
+        </td>
+        <td>
+            {{ag.sala ? "Ligado" : "Desligado"}}
+        </td>
+        <td>
+            {{ag.quarto ? "Ligado" : "Desligado"}}
+        </td>
+        <td>
+            {{ag.tv ? "Ligado" : "Desligado"}}
+        </td>
+        <td>
+            <a class="btn btn-secondary" ng-click='editar($index)' href="#!editarAgendamento" data-toggle="modal"
+                    data-target=".bd-example-modal-lg">Editar
+            </a>
+        </td>
+        <td>
+            <button class="btn btn-danger" ng-click="remover($index)" data-toggle="modal"
+                    data-target=".bd-example-modal-lg">Excluir
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    </thead>
+</table>

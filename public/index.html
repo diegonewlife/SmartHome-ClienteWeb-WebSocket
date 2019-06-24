@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SmartHome">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-websocket/2.0.1/angular-websocket.min.js"></script>
+   <script src="app.js"></script>
+    <script src="route.js"></script>
+    <script src="service/agendamentosService.js"></script>
+    <script src="service/novoAgendamentoService.js"></script>
+    <script src="controller/novoAgendamentoController.js"></script>
+    <script src="controller/agendamentoController.js"></script>
+    <script src="controller/editarAgendamentoController.js"></script>
+    <script src="controller/smartHomeController.js"></script>
+
+    <script type="text/javascript" src="controller/websocketController.js"></script>
+
+    
+
+</head>
+<body ng-controller='websocketController'>
+ 
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Smart Home</h1>
+            <p class="lead">Utilize este sistema para agendar o horário de funcionamento dos seus aparelhos eletroeletrônicos</p>
+        </div>
+    </div>
+    <div class="container">
+        <span class="badge"  ng-class="{'badge-success' : estadoAtual.ventilador,  'badge-danger': !estadoAtual.ventilador}">Ventilador </span>
+          <span class="badge"  ng-class="{'badge-success' : estadoAtual.sala,  'badge-danger': !estadoAtual.sala}">Luz da Sala </span>
+            <span class="badge"  ng-class="{'badge-success' : estadoAtual.quarto,  'badge-danger': !estadoAtual.quarto}">Luz quarto </span>
+              <span class="badge"  ng-class="{'badge-success' : estadoAtual.tv,  'badge-danger': !estadoAtual.tv}">TV </span>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#!smartHome">SmartHome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!agendamentos">Agendamentos <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!novoAgendamento">Novo Agendamento</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div ng-view="view" >
+
+    </div>
+</div>
+</body>
+</html>
